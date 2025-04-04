@@ -37,9 +37,6 @@
                         <td colspan="7" class="text-center text-gray-500 py-4">Aucun périphérique trouvé.</td>
                     </tr>
                 @endforelse
-                <tr class="js-no-results" style="display: none;">
-                    <td colspan="10 " class=" text-center text-gray-500 py-4">Aucun ordinateur correspond au filtre</td>
-                </tr>
             </tbody>
         </table>
 

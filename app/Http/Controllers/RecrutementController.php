@@ -29,7 +29,7 @@ class RecrutementController extends Controller
             'type_contrat' => 'in:jet,total',
             'telephone' => 'max:20',
             'model' => 'max:255',
-            'num_serie' => 'unique:materiels,num_serie',
+            'num_serie' => 'max:255',
             'puk' => 'max:255',
             'pin' => 'max:255',
         ]);

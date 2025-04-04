@@ -30,7 +30,8 @@ class DashboardController extends Controller
     public function getChartData()
     {
         // Récupérer les données pour le graphique
-        $types = ['Pc Bureau', 'Pc Portable', 'Imprimante', 'Routeur', 'Disque Externe' ,'Clavier' ,'Souris'];
+        // $types = ['Pc Bureau', 'Pc Portable', 'Imprimante', 'Routeur', 'Disque Externe' ,'Clavier' ,'Souris'];
+        $types = Type::select('type')->pluck('type') ;
         $counts = [];
 
         foreach ($types as $type) {

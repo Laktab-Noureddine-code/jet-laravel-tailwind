@@ -6,6 +6,7 @@ use App\Models\Affectation;
 use App\Models\Ordinateur;
 use App\Models\Materiel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrdinateurController extends Controller
 {
@@ -45,15 +46,16 @@ class OrdinateurController extends Controller
                 'ordinateurs.stockage',
                 'ordinateurs.processeur'
             )
+            ->distinct('materiels.id' ,'materiels.num_serie')
             ->get();
 
         // Récupération des dernières affectations pour les matériels concernés
         $lastAffectations = Affectation::whereIn('materiel_id', $ordinateurs->pluck('materiel_id'))
             ->orderByDesc('date_affectation')
-            ->orderByDesc('created_at')
+            ->orderByDesc('created_at') 
+            ->distinct('materiel_id')
             ->get()
             ->groupBy('materiel_id');
-
 
         // Ajout du statut d'affectation ou "NON AFFECTE"
         foreach ($ordinateurs as $ordinateur) {

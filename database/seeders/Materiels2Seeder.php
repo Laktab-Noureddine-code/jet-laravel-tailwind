@@ -89,12 +89,27 @@ class Materiels2Seeder extends Seeder
                     'departement' => $materiel2->departement,
                 ]);
             }
+            $materiel = Materiel::findOrFail($materiel->id);
+
+            // Récupérer toutes les affectations précédentes du matériel
+            $anciennesAffectations = Affectation::where('materiel_id', $materiel->id)->get();
+
+            // Si des affectations existent, les passer à "NON AFFECTE"
+            if ($anciennesAffectations->isNotEmpty()) {
+                foreach ($anciennesAffectations as $affectation) {
+                    $affectation->update(['statut' => 'NON AFFECTE']);
+                }
+                $statutAffectation = 'REAFFECTE';
+            } else {
+                $statutAffectation = 'AFFECTE';
+            }
+
             Affectation::create([
                 'materiel_id' => $materiel->id,
                 'utilisateur_id' => $utilisateur->id,
                 'date_affectation' => $materiel2->date_affectation,
                 'utilisateur1' => $materiel2->utilisateur,
-                'statut' => $materiel2->statut === "A" ? "AFFECTE" : $materiel2->statut,
+                'statut' => $statutAffectation,
                 'chantier' => $materiel2->chantier,
             ]);
         }

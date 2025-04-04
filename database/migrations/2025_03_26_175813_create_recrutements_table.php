@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('type_contrat')->nullable();
             $table->string('telephone')->nullable();
             $table->string('model')->nullable();
-            $table->string('num_serie')->unique()->nullable();
+            $table->string('num_serie')->nullable();
             $table->string('puk')->nullable();
             $table->string('pin')->nullable();
             $table->string('status')->default('en attente')->nullable();

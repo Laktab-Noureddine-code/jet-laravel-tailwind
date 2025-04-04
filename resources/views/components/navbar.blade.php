@@ -55,12 +55,12 @@
                             <i class="text-[16px] fa-solid fa-bell mr-2"></i>Notifications 
                         </a>
                     </li>
-                    {{-- <li class="">
+                    <li class="">
                         <a href="{{ route('trash') }}"
                             class="{{ request()->routeIs('trash*') ? 'links underline text-[#f4d103]' : 'links' }}">
                             <i class="text-[16px] fa-solid fa-trash-can-arrow-up mr-2"></i>trash
-                        </a>
-                    </li> --}}
+                        </a>    
+                    </li>
 
                     <li class="">
                         <form action="{{ route('logout') }}" method="post">
